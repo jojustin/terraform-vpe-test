@@ -1,1 +1,2 @@
-# terraform-vpe-test
+# terraform-iks
+Terraform to deploy VPC IKS cluster
