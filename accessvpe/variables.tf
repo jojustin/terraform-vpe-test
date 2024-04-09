@@ -17,12 +17,12 @@ variable "resource_group" {
 variable "region" {
   type        = string
   description = "Region where resources will be created or fetched from"
-  default = "us-east"
+  default = "us-south"
 }
 
 
 variable "smguid" {
   type        = string
   description = "SMGuid"
-  default = "93091e65-22b8-44eb-8a0b-6e3fd592d0ea"
+  default = "40cc23a8-d73d-4da3-ac3a-1fa75cf6678f"
 }
