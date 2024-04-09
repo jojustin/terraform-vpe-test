@@ -47,6 +47,10 @@ resource "ibm_resource_instance" "secrets_manager" {
   timeouts {
     create = "20m" # Extending provisioning time to 20 minutes
   }
+  parameters = {
+   private_endpoint_type: "vpe",
+   service-endpoints: "private",
+ }
 }
 
 # VPE provisioning should wait for the database provisioning
