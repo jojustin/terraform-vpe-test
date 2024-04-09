@@ -22,12 +22,12 @@ resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_diff_public" {
   payload = "secret-credentials"
 }
 
-# resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_difftf" {
-#   name          = "fromanothertf-vpe-secret"
-#   instance_id   = "40cc23a8-d73d-4da3-ac3a-1fa75cf6678f"
-#   region        = var.region
-#   custom_metadata = {"key":"fromanothertf"}
-#   description = "Created from another TF"
-#   labels = ["fromanothertf-vpe"]
-#   payload = "secret-credentials"
-# }
+resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_difftf" {
+  name          = "fromanothertf-vpe-secret"
+  instance_id   = "40cc23a8-d73d-4da3-ac3a-1fa75cf6678f"
+  region        = var.region
+  custom_metadata = {"key":"fromanothertf"}
+  description = "Created from another TF"
+  labels = ["fromanothertf-vpe"]
+  payload = "secret-credentials"
+}
