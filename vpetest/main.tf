@@ -43,7 +43,7 @@ resource "ibm_resource_instance" "secrets_manager" {
   service           = "secrets-manager"
   plan              = "trial"
   location          = var.region
-  resource_group_id = data.ibm_resource_group.resource_group.id,
+  resource_group_id = data.ibm_resource_group.resource_group.id
   service-endpoints = "private"
   timeouts {
     create = "20m" # Extending provisioning time to 20 minutes
