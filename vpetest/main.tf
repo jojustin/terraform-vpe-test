@@ -21,18 +21,18 @@ resource "ibm_is_subnet" "subnet1" {
   resource_group = data.ibm_resource_group.resource_group.id
 }
 
-resource "ibm_container_vpc_cluster" "cluster" {
-  name              = "${local.prefix}-vpc-cluster"
-  vpc_id            = ibm_is_vpc.vpc1.id
-  flavor            = "bx2.2x8"
-  worker_count      = "2"
-  resource_group_id = data.ibm_resource_group.resource_group.id
-  # cos_instance_crn  = module.cos_instance.cos_instance_id
-  zones {
-      subnet_id = ibm_is_subnet.subnet1.id
-      name      = "${var.region}-1"
-    }
-}
+# resource "ibm_container_vpc_cluster" "cluster" {
+#   name              = "${local.prefix}-vpc-cluster"
+#   vpc_id            = ibm_is_vpc.vpc1.id
+#   flavor            = "bx2.2x8"
+#   worker_count      = "2"
+#   resource_group_id = data.ibm_resource_group.resource_group.id
+#   # cos_instance_crn  = module.cos_instance.cos_instance_id
+#   zones {
+#       subnet_id = ibm_is_subnet.subnet1.id
+#       name      = "${var.region}-1"
+#     }
+# }
 
 ##############################################################################
 ## Create prerequisite.  Secrets Manager,  Secret Group and a Trusted Profile
@@ -68,29 +68,6 @@ resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_before" {
   labels = ["before-vpe"]
   payload = "secret-credentials"
 }
-
-##############################################################################
-# VPE
-##############################################################################
-
-# module "vpe" {
-#   source  = "terraform-ibm-modules/vpe-gateway/ibm"
-#   version = "4.1.1"
-#   prefix  = "vpe-to-sm"
-#   cloud_service_by_crn = [
-#     {
-#       service_name = "${local.prefix}-sm"
-#       crn          = ibm_resource_instance.secrets_manager.crn
-#     },
-#   ]
-#   vpc_id             = ibm_is_vpc.vpc1.id
-#   subnet_zone_list   = ibm_is_vpc.vpc1.subnets
-#   resource_group_id  = data.ibm_resource_group.resource_group.id
-#   security_group_ids = [ibm_is_vpc.vpc1.default_security_group]
-#   depends_on = [
-#     time_sleep.wait_120_seconds
-#   ]
-# }
 
 ##############################################################################
 # Virtual Endpoint Gateways
