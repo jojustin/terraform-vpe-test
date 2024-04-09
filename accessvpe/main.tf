@@ -12,8 +12,8 @@ locals {
 ##############################################################################
 
 
-resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_difftf" {
-  name          = "fromanothertf-vpe-secret"
+resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_diff_public" {
+  name          = "fromanothertf-public-secret"
   instance_id   = "a29e22b9-5fe0-47a2-961a-0fd89e3bc007"
   region        = var.region
   custom_metadata = {"key":"fromanothertf"}

@@ -14,9 +14,9 @@
 # }
 
 
-output "smcreated" {
-    value = ibm_sm_arbitrary_secret.sm_arbitrary_secret_difftf.crn
-}
+# output "smcreated" {
+#     value = ibm_sm_arbitrary_secret.sm_arbitrary_secret_difftf.crn
+# }
 
 
 # output "afer" {
