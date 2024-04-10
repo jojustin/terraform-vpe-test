@@ -20,6 +20,16 @@ variable "region" {
   default = "us-south"
 }
 
+variable "service_endpoints" {
+  type        = string
+  description = "The types of service endpoints to set on the Secrets Manager instance. Possible values are `public`, `private` or `public-and-private`."
+  default     = "public-and-private"
+  validation {
+    condition     = contains(["public", "private", "public-and-private"], var.service_endpoints)
+    error_message = "The specified service_endpoints is not a valid selection!"
+  }
+}
+
 
 variable "smguid" {
   type        = string

@@ -5,6 +5,7 @@ data ibm_resource_group "resource_group" {
 
 locals {
   prefix = "jej-8apr"
+  allowed_network = var.service_endpoints == "private" ? "private-only" : "public-and-private"
 }
 
 resource "ibm_is_vpc" "vpc1" {
@@ -21,19 +22,6 @@ resource "ibm_is_subnet" "subnet1" {
   resource_group = data.ibm_resource_group.resource_group.id
 }
 
-# resource "ibm_container_vpc_cluster" "cluster" {
-#   name              = "${local.prefix}-vpc-cluster"
-#   vpc_id            = ibm_is_vpc.vpc1.id
-#   flavor            = "bx2.2x8"
-#   worker_count      = "2"
-#   resource_group_id = data.ibm_resource_group.resource_group.id
-#   # cos_instance_crn  = module.cos_instance.cos_instance_id
-#   zones {
-#       subnet_id = ibm_is_subnet.subnet1.id
-#       name      = "${var.region}-1"
-#     }
-# }
-
 ##############################################################################
 ## Create prerequisite.  Secrets Manager,  Secret Group and a Trusted Profile
 ##############################################################################
@@ -44,12 +32,12 @@ resource "ibm_resource_instance" "secrets_manager" {
   plan              = "trial"
   location          = var.region
   resource_group_id = data.ibm_resource_group.resource_group.id
-  service_endpoints = "private"
+  service_endpoints = var.service_endpoints
   timeouts {
     create = "20m" # Extending provisioning time to 20 minutes
   }
   parameters = {
-    "allowed_network" = "private-only"
+    "allowed_network" = local.allowed_network
   }
 }
 
@@ -67,6 +55,7 @@ resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_before" {
   description = "Created before attaching VPE"
   labels = ["before-vpe"]
   payload = "secret-credentials"
+  endpoint_type = "private"
 }
 
 ##############################################################################
@@ -96,4 +85,5 @@ resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_after" {
   description = "Created after attaching VPE"
   labels = ["after-vpe"]
   payload = "secret-credentials"
+  endpoint_type = "private"
 }
