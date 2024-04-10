@@ -19,6 +19,5 @@ resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_after" {
   description = "Created by accessing sm"
   labels = ["privateaccess"]
   payload = "secret-credentials"
-  endpoint_type = "private"
 }
 
