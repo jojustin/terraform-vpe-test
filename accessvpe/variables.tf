@@ -29,10 +29,3 @@ variable "service_endpoints" {
     error_message = "The specified service_endpoints is not a valid selection!"
   }
 }
-
-
-variable "smguid" {
-  type        = string
-  description = "SMGuid"
-  default = "40cc23a8-d73d-4da3-ac3a-1fa75cf6678f"
-}

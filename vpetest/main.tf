@@ -4,7 +4,7 @@ data ibm_resource_group "resource_group" {
 }
 
 locals {
-  prefix = "jej-8apr"
+  prefix = "jej-10pr"
   allowed_network = var.service_endpoints == "private" ? "private-only" : "public-and-private"
 }
 
