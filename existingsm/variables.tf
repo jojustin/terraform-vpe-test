@@ -19,3 +19,10 @@ variable "region" {
   description = "Region where resources will be created or fetched from"
   default = "us-south"
 }
+
+
+variable "smguid" {
+  type        = string
+  description = "smguid"
+  default = ""
+}
