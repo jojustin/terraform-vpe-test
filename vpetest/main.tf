@@ -4,7 +4,7 @@ data ibm_resource_group "resource_group" {
 }
 
 locals {
-  prefix = "jej-10pr"
+  prefix = "jej-10apr"
   allowed_network = var.service_endpoints == "private" ? "private-only" : "public-and-private"
 }
 
@@ -37,7 +37,7 @@ resource "ibm_resource_instance" "secrets_manager" {
     create = "20m" # Extending provisioning time to 20 minutes
   }
   parameters = {
-    "allowed_network" = local.allowed_network
+    "allowed_network" = allowed_network
   }
 }
 
