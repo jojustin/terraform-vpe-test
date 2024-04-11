@@ -23,7 +23,7 @@ resource "ibm_resource_instance" "secrets_manager" {
     create = "20m" # Extending provisioning time to 20 minutes
   }
   parameters = {
-    "allowed_network" = local.allowed_network
+    "allowed_network" = "private-only"
   }
 }
 
@@ -43,3 +43,23 @@ resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_after" {
   payload = "secret-credentials"
   endpoint_type = "private"
 }
+
+# resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_diff_public" {
+#   name          = "fromanothertf-public-secret"
+#   instance_id   = "a29e22b9-5fe0-47a2-961a-0fd89e3bc007"
+#   region        = var.region
+#   custom_metadata = {"key":"fromanothertf"}
+#   description = "Created from another TF"
+#   labels = ["fromanothertf-vpe"]
+#   payload = "secret-credentials"
+# }
+
+# resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_difftf" {
+#   name          = "fromanothertf-vpe-secret"
+#   instance_id   = "40cc23a8-d73d-4da3-ac3a-1fa75cf6678f"
+#   region        = var.region
+#   custom_metadata = {"key":"fromanothertf"}
+#   description = "Created from another TF"
+#   labels = ["fromanothertf-vpe"]
+#   payload = "secret-credentials"
+# }
