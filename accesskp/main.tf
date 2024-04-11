@@ -36,7 +36,7 @@ resource "time_sleep" "wait_120_seconds" {
 resource "ibm_kms_key" "key" {
   instance_id   = ibm_resource_instance.kms.guid
   key_name      = "${var.service_endpoints}-key"
-  key_ring_id   = "${var.service_endpoints}-key-ring"
+  key_ring_id   = "default"
   standard_key  = false
   endpoint_type = "private"
   force_delete  = "false"
