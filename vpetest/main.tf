@@ -4,7 +4,7 @@ data ibm_resource_group "resource_group" {
 }
 
 locals {
-  prefix = "jej-10apr"
+  prefix = "jej-12apr"
   allowed_network = var.service_endpoints == "private" ? "private-only" : "public-and-private"
 }
 
@@ -27,7 +27,7 @@ resource "ibm_is_subnet" "subnet1" {
 ##############################################################################
 
 resource "ibm_resource_instance" "secrets_manager" {
-  name              = "${local.prefix}-sm"
+  name              = "${local.prefix}-sm-vpe"
   service           = "secrets-manager"
   plan              = "trial"
   location          = var.region

@@ -11,7 +11,7 @@ variable "ibmcloud_api_key" {
 variable "resource_group" {
   type        = string
   description = "Resource group ID where infra would be setup.  This RG should pre-exist"
-  default = "jejvpe-schematics"
+  default = "jejschematics"
 }
 
 variable "service_endpoints" {
