@@ -37,7 +37,7 @@ resource "ibm_resource_instance" "secrets_manager" {
     create = "20m" # Extending provisioning time to 20 minutes
   }
   parameters = {
-    "allowed_network" = allowed_network
+    "allowed_network" = local.allowed_network
   }
 }
 
