@@ -61,7 +61,7 @@ resource "ibm_kms_key" "key_before" {
 ##############################################################################
 
 resource "ibm_is_virtual_endpoint_gateway" "endpoint_gateways" {
-  depends_on      = [ibm_is_subnet.subnet1]
+  depends_on      = [ibm_is_subnet.subnet1, ibm_resource_instance.kms]
   name            = "${local.prefix}-vpe"
   # check if target is a CRN and handle accordingly
   target {
