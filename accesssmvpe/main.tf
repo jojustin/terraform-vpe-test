@@ -47,17 +47,6 @@ resource "time_sleep" "wait_120_seconds" {
   create_duration = "120s"
 }
 
-resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_before" {
-  name          = "before-vpe-secret"
-  instance_id   = ibm_resource_instance.secrets_manager.guid
-  region        = var.region
-  custom_metadata = {"key":"beforevalue"}
-  description = "Created before attaching VPE"
-  labels = ["before-vpe"]
-  payload = "secret-credentials"
-  endpoint_type = "private"
-}
-
 ##############################################################################
 # Virtual Endpoint Gateways
 ##############################################################################
