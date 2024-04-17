@@ -14,14 +14,6 @@ resource "ibm_is_vpc" "vpc1" {
   resource_group = data.ibm_resource_group.resource_group.id
 }
 
-resource "ibm_is_subnet" "subnet1" {
-  name                     = "${local.prefix}-subnet"
-  vpc                      = ibm_is_vpc.vpc1.id
-  zone                     = "${var.region}-1"
-  total_ipv4_address_count = 256
-  resource_group = data.ibm_resource_group.resource_group.id
-}
-
 ##############################################################################
 ## Create prerequisite.  Secrets Manager,  Secret Group and a Trusted Profile
 ##############################################################################
