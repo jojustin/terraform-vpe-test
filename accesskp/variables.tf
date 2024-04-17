@@ -11,7 +11,7 @@ variable "ibmcloud_api_key" {
 variable "resource_group" {
   type        = string
   description = "Resource group ID where infra would be setup.  This RG should pre-exist"
-  default = "jejaccesskp"
+  default = "jejschematics"
 }
 
 variable "region" {
@@ -23,7 +23,7 @@ variable "region" {
 variable "service_endpoints" {
   type        = string
   description = "The types of service endpoints to set on the Secrets Manager instance. Possible values are `public`, `private` or `public-and-private`."
-  default     = "public-and-private"
+  default     = "private"
   validation {
     condition     = contains(["public", "private", "public-and-private"], var.service_endpoints)
     error_message = "The specified service_endpoints is not a valid selection!"
