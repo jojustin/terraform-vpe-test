@@ -4,7 +4,7 @@ data ibm_resource_group "resource_group" {
 }
 
 locals {
-  prefix = "jej-17apr-schematics"
+  prefix = "jej-17apr-ws"
   allowed_network = var.service_endpoints == "private" ? "private-only" : "public-and-private"
 }
 
