@@ -65,7 +65,7 @@ resource "ibm_is_virtual_endpoint_gateway" "endpoint_gateways" {
   name            = "${local.prefix}-vpe"
   # check if target is a CRN and handle accordingly
   target {
-    crn = "crn:v1:bluemix:public:kms:au-syd:::endpoint:private.au-syd.kms.cloud.ibm.com"
+    crn = "crn:v1:bluemix:public:kms:us-south:::endpoint:private.us-south.kms.cloud.ibm.com"
     resource_type = "provider_cloud_service"
   }
   vpc = ibm_is_vpc.vpc1.id
