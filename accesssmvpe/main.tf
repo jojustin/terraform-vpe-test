@@ -85,5 +85,5 @@ resource "ibm_sm_arbitrary_secret" "sm_arbitrary_secret_after" {
   description = "Created after attaching VPE"
   labels = ["after-vpe"]
   payload = "secret-credentials"
-  endpoint_type = "private"
+  #endpoint_type = "private"
 }
