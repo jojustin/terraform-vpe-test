@@ -4,7 +4,7 @@ data ibm_resource_group "resource_group" {
 }
 
 locals {
-  prefix = "jej-10apr-kp"
+  prefix = "jej-17apr-schematics-kp"
   allowed_network = var.service_endpoints == "private" ? "private-only" : "public-and-private"
 }
 
@@ -38,6 +38,6 @@ resource "ibm_kms_key" "key" {
   key_name      = "${var.service_endpoints}-key"
   key_ring_id   = "default"
   standard_key  = false
-  # endpoint_type = "private"
+  endpoint_type = "private"
   force_delete  = "false"
 }
