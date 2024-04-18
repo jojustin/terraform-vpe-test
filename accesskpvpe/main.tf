@@ -79,6 +79,6 @@ resource "ibm_kms_key" "key_after" {
   key_name      = "${var.service_endpoints}-after-key"
   key_ring_id   = "default"
   standard_key  = false
-  # endpoint_type = "private"
+  endpoint_type = "private"
   force_delete  = "false"
 }
