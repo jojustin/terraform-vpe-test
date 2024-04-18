@@ -28,16 +28,3 @@ variable "region" {
   description = "Region where resources will be created or fetched from"
   default = "au-syd"
 }
-
-
-variable "vpename" {
-  type        = string
-  description = "vpename"
-  default = ""
-}
-
-variable "subnetname" {
-  type        = string
-  description = "subnetname"
-  default = ""
-}
